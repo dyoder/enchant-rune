@@ -1,0 +1,10 @@
+origin: https://acme.io
+expires:
+  days: 1
+identity: alice@acme.io
+grants:
+  - resources:
+    - foo
+    bindings:
+      bar: abc
+    method: get

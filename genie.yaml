@@ -1,0 +1,55 @@
+presets:
+  verify: null
+  update: null
+  release: null
+  esm: null
+  coffeescript:
+    targets:
+      browser:
+        - preset: browser
+          glob:
+            - src/**/*.coffee
+      #   - preset: browser
+      #     glob:
+      #       - test/client/**/*.coffee
+      #     options:
+      #       mode: debug
+      #   - preset: node
+      #     glob:
+      #       - test/**/*.coffee
+      #       - '!test/client/**/*.coffee'
+      node:
+        - preset: node
+          glob:
+            - '{src,test}/**/*.coffee'
+  yaml:
+    targets:
+      node:
+        - preset: js
+          glob:
+            - "{src,test}/**/*.yaml"
+        - preset: json
+          glob:
+            - "src/**/*.schema.yaml"
+  pug:
+    targets:
+      node:
+        - preset: render
+          glob:
+            - "email/**/*.pug"
+
+  schema:
+    glob: "src/**/*.schema.yaml"
+    
+sky:
+  namespace: dashkite
+  ses:
+    templates:
+      - name: authenticate
+        subject: Authenticate with DashKite
+
+  graphene:
+    - name: enchant-test
+      db: 32ro5fmo6qlrb7frp0k3fk1gt
+      collections:
+        - byname: bundles
