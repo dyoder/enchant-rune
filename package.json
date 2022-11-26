@@ -1,5 +1,5 @@
 {
-  "name": "@dashkite/enchant-rune-authorizer",
+  "name": "@dashkite/enchant-rune",
   "version": "0.0.0",
   "description": "Authenticated authorization for HTTP",
   "exports": {
@@ -17,12 +17,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dashkite/enchant.git"
+    "url": "git+https://github.com/dashkite/enchant-rune.git"
   },
   "bugs": {
-    "url": "https://github.com/dashkite/enchant/issues"
+    "url": "https://github.com/dashkite/enchant-rune/issues"
   },
-  "homepage": "https://github.com/dashkite/enchant#readme",
+  "homepage": "https://github.com/dashkite/enchant-rune#readme",
   "devDependencies": {
     "@dashkite/amen": "file:../amen",
     "@dashkite/amen-console": "file:../amen-console",

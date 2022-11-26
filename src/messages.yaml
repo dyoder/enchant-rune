@@ -1,8 +1,11 @@
 request disallowed: >-
   Rune authorization did not match the given request
-  for resource [ ${ request.url } ]
-  and method [ ${ request.method } ].
+  for resource [ ${ request.resource.name } ]
+  and method [ ${ request.method } ]
+  at domain [ ${ request.domain } ].
 
 verification failed: >-
-  Rune verification failed for resource [ ${ request.url } ]
-  and method [ ${ request.method } ].
+  Rune verification failed
+  for resource [ ${ request.resource.name } ]
+  and method [ ${ request.method } ]
+  at domain [ ${ request.domain } ].

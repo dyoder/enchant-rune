@@ -1,4 +1,4 @@
-origin: https://acme.io
+domain: acme.io
 expires:
   days: 1
 identity: alice@acme.io
