@@ -1,9 +1,10 @@
 import * as Runes from "@dashkite/runes"
 import { getSecret } from "@dashkite/dolores/secrets"
 import { register } from "@dashkite/enchant/actions"
+import { Expression } from "@dashkite/enchant/expression"
 
-register "issue rune", ( { secret, authorization }) ->
+register "issue rune", ( { secret, authorization }, context ) ->
   Runes.issue {
     secret: ( await getSecret secret )
-    authorization 
+    authorization: Expression.apply authorization, context
   }
