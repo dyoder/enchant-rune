@@ -20,7 +20,7 @@ register "rune", ({ parameters, credential }, { request }) ->
     console.log "enchant: verification succeeded"
     [ authorization ] = Runes.decode credential
     console.log "enchant: matching against request"
-    if ( await Runes.match { request, authorization })?
+    if ( await Runes.match { request, authorization })
       console.log "enchant: match succeeded"
       valid: true
     else
