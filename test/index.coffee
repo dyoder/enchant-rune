@@ -25,7 +25,7 @@ do ->
       valid: 
         Runes.issue { authorization, secret }
 
-  print await test "@dashkite/enchant-rune-authorizer", [
+  print await test "@dashkite/enchant-rune", [
 
     test "valid rune", ->
       { rune, nonce } = await Credentials.Runes.valid
@@ -48,6 +48,29 @@ do ->
       console.log await Actions.authorize schemes, context
     
     test "invalid rune"
+
+    test "issue rune"
+
+    # TODO need to add faux resolvers to Rune
+    # TODO we probably also need to update the Runes used here?
+    # maybe just copy the over from the Runes module?
+    test "bind runes", ->
+      { rune, nonce } = await Credentials.Runes.valid
+      context =
+        request:
+          origin: "acme.io"
+          resource:
+            name: "foo"
+            bindings:
+              bar: "abc"
+          method: "get"
+          authorization: [
+            scheme: "rune"
+            credential: rune
+            parameters:
+              nonce: nonce
+          ]
+      console.log await Actions["bind runes"] { secret:  "guardian" }, context
 
   ]
 

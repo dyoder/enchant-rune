@@ -1,3 +1,4 @@
+name: foobar
 domain: acme.io
 expires:
   days: 1

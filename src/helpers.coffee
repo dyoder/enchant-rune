@@ -1,4 +1,3 @@
-import { convert } from "@dashkite/bake"
 import { confidential } from "panda-confidential"
 
 Confidential = confidential()
