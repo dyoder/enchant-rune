@@ -1,11 +1,68 @@
-name: foobar
 domain: acme.io
+
 expires:
-  days: 1
-identity: alice@acme.io
+  days: 30
+
+identity: alice@acme.org
+
+resolvers:
+
+  account:
+    action:
+      name: request
+      value: 
+        resource: 
+          name: account
+          bindings:
+            email: alice@acme.org
+
+  workspaces:
+    action:
+      name: request
+      value:
+        resource:
+          name: workspaces
+          bindings:
+            account: ${ account.address }
+
 grants:
+
   - resources:
-    - foo
+      - account
+    methods:
+      - get
     bindings:
-      bar: abc
-    method: get
+      email: alice@acme.org
+
+  - resources:
+      - workspaces
+    methods:
+      - get
+    resolvers:
+      - account
+    bindings:
+      account: ${ account.address }
+
+  - resources:
+      - workspace
+    methods:
+      - get
+    resolvers:
+      - workspaces
+    any:
+      from: ${ workspaces[*].address }
+      each: workspace
+      bindings:
+        workspace: ${ workspace }
+
+  - resources:
+      - workspace-subscriptions
+    methods:
+      - get
+    resolvers:
+      - workspaces
+    any:
+      from: ${ workspaces[*].address }
+      each: workspace
+      bindings:
+        workspace: ${ workspace }

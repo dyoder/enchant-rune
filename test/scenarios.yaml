@@ -1,0 +1,15 @@
+valid rune: &valid-rune
+  request:
+    domain: acme.io
+    resource:  
+      name: workspace
+      bindings:
+        workspace: acme
+    method: get
+    authorization:
+      - scheme: rune
+        credential: ${ rune }
+        parameters:
+          nonce: ${ nonce }
+
+bind runes: *valid-rune
