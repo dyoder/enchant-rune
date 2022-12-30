@@ -1,13 +1,7 @@
-import { confidential } from "panda-confidential"
+import { convert } from "@dashkite/bake"
 
-Confidential = confidential()
-{ Message, hash, convert } = Confidential
+json64 = ( value ) -> 
+  convert from: "utf8", to: "base64",
+    JSON.stringify value
 
-hash = ( encoding, value ) ->
-  message = Message.from encoding, value
-  hash message
-    .to "base64"
-
-base64 = ( value ) ->  convert from: "utf8", to: "base64", value
-
-export { hash, base64 }
+export { json64 }

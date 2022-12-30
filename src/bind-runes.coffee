@@ -3,9 +3,8 @@ import { getSecret } from "@dashkite/dolores/secrets"
 import { register } from "@dashkite/enchant/actions"
 import * as Arr from "@dashkite/joy/array"
 import * as Type from "@dashkite/joy/type"
-
-isEmpty = ( value ) ->
-  value?.length? && value.length > 0
+import * as Val from "@dashkite/joy/value"
+import { json64 } from "./helpers"
 
 register "bind runes", ({ secret }, context ) ->
 
@@ -26,13 +25,13 @@ register "bind runes", ({ secret }, context ) ->
       Arr.first Runes.decode authorization.credential
 
   # if we have some runes, we'll try to bind them
-  if !( isEmpty current )
+  if !( Val.isEmpty current )
 
     # we'll need this for Rune.bind
     secret = await getSecret secret
 
     # go through the authorization documents that have resolvers
-    for authorization in current when !(isEmpty authorization.resolvers )
+    for authorization in current when !(Val.isEmpty authorization.resolvers )
 
       # only bind runes where we don't already have another rune
       # with the same name, which we assume must be the bound counterpart
@@ -43,9 +42,9 @@ register "bind runes", ({ secret }, context ) ->
           authorization: await Runes.bind { authorization, context... }
         }
     
-    # hash and base64 the resulting bound runes, which will
+    # encode the resulting bound runes, which will
     # be handled by the policy: our job is done here
-    base64 hash "utf8", JSON.stringify await Promise.all bound
+    json64 await Promise.all results
 
   # there were no runes
   else []

@@ -23,7 +23,7 @@ resolvers:
         resource:
           name: workspaces
           bindings:
-            account: ${ account.address }
+            account: \${ account.address }
 
 grants:
 
@@ -41,7 +41,7 @@ grants:
     resolvers:
       - account
     bindings:
-      account: ${ account.address }
+      account: \${ account.address }
 
   - resources:
       - workspace
@@ -50,10 +50,10 @@ grants:
     resolvers:
       - workspaces
     any:
-      from: ${ workspaces[*].address }
+      from: \${ workspaces[*].address }
       each: workspace
       bindings:
-        workspace: ${ workspace }
+        workspace: \${ workspace }
 
   - resources:
       - workspace-subscriptions
@@ -62,7 +62,7 @@ grants:
     resolvers:
       - workspaces
     any:
-      from: ${ workspaces[*].address }
+      from: \${ workspaces[*].address }
       each: workspace
       bindings:
-        workspace: ${ workspace }
+        workspace: \${ workspace }

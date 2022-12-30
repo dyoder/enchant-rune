@@ -32,9 +32,11 @@
     "@dashkite/polaris": "file:../polaris"
   },
   "dependencies": {
+    "@dashkite/bake": "^0.0.6",
     "@dashkite/dolores": "file:../dolores",
     "@dashkite/enchant": "file:../enchant",
     "@dashkite/messages": "file:../messages",
-    "@dashkite/runes": "file:../runes"
+    "@dashkite/runes": "file:../runes",
+    "panda-confidential": "^3.1.2"
   }
 }
