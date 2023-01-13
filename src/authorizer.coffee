@@ -12,8 +12,6 @@ message = do ( _messages = null ) ->
 
 secret = undefined
 
-# TODO allow for multiple candidates
-
 register "rune", ({ parameters, credential }, { request }) ->
   { nonce } = parameters
   secret ?= await getSecret "guardian"

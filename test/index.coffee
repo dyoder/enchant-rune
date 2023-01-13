@@ -49,8 +49,8 @@ do ->
       { rune, nonce } = await makeRune secret, "valid"
       context = expand scenario, { rune, nonce }
       result = await Actions["bind runes"] { secret:  "guardian" }, context
-      credentials = JSON.parse convert from: "base64", to: "utf8", result
-      [ _bound ] = Runes.decode credentials[0].rune
+      credential = JSON.parse convert from: "base64", to: "utf8", result[0]
+      [ _bound ] = Runes.decode credential.rune
       assert !(rune.resolvers?)
       assert.deepEqual bound.grants, _bound.grants
       

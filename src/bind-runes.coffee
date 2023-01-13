@@ -11,7 +11,7 @@ secret = undefined
 hasResolvers = ({ resolvers }) ->
   resolvers? && !( Val.isEmpty Object.keys resolvers )
 
-register "bind runes", ({ secret }, context ) ->
+register "bind runes", ( value, context ) ->
 
   { request } = context
 
@@ -30,16 +30,17 @@ register "bind runes", ({ secret }, context ) ->
   if !( Val.isEmpty current )
 
     # we'll need this for Rune.bind
-    secret ?= await getSecret secret
+    secret ?= await getSecret value.secret
 
     # go through the authorization documents that have resolvers
     results = for authorization in current when hasResolvers authorization
-      Runes.issue {
+      authorization.expires = value.expires
+      json64 await Runes.issue {
         secret
-        authorization: await Runes.bind { authorization, context... }
+        authorization: await Runes.bind authorization, context
       }
     
     # encode the resulting bound runes, which will
     # be handled by the policy: our job is done here
     if results.length > 0
-      json64 await Promise.all results
+      results
