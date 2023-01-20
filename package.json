@@ -25,18 +25,18 @@
   "homepage": "https://github.com/dashkite/enchant-rune#readme",
   "devDependencies": {
     "@dashkite/amen": "^0.1.2",
-    "@dashkite/amen-console": "file:../amen-console",
+    "@dashkite/amen-console": "^0.0.2",
     "@dashkite/assert": "^0.1.3",
+    "@dashkite/dolores": "link:../dolores",
     "@dashkite/genie": "^0.5.11",
-    "@dashkite/genie-presets": "file:../genie-presets",
-    "@dashkite/polaris": "file:../polaris"
+    "@dashkite/genie-presets": "link:../genie-presets",
+    "@dashkite/messages": "link:../messages",
+    "@dashkite/polaris": "link:../polaris"
   },
   "dependencies": {
     "@dashkite/bake": "^0.0.6",
-    "@dashkite/dolores": "file:../dolores",
-    "@dashkite/enchant": "file:../enchant",
-    "@dashkite/messages": "file:../messages",
-    "@dashkite/runes": "file:../runes",
+    "@dashkite/enchant": "link:../enchant",
+    "@dashkite/runes": "link:../runes",
     "panda-confidential": "^3.1.2"
   }
 }
