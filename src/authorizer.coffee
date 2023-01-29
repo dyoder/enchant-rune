@@ -12,13 +12,13 @@ message = do ( _messages = null ) ->
 
 secret = undefined
 
-register "rune", ({ parameters, credential }, { request }) ->
-  { nonce } = parameters
+register "rune", ({ parameters }, { request }) ->
+  { rune, nonce } = parameters
   secret ?= await getSecret "guardian"
-  console.log "enchant: verifying", credential, nonce
-  if Runes.verify { rune: credential, nonce, secret }
+  console.log "enchant: verifying", rune, nonce
+  if Runes.verify { rune, nonce, secret }
     console.log "enchant: verification succeeded"
-    [ authorization ] = Runes.decode credential
+    [ authorization ] = Runes.decode rune
     console.log "enchant: matching against request"
     if ( await Runes.match { request, authorization })
       console.log "enchant: match succeeded"

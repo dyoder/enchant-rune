@@ -10,6 +10,8 @@ specifiers:
   '@dashkite/genie': ^0.5.11
   '@dashkite/genie-modules': link:../genie-modules
   '@dashkite/genie-presets': link:../genie-presets
+  '@dashkite/http-headers': link:../http-headers
+  '@dashkite/joy': ^0.3.16
   '@dashkite/messages': link:../messages
   '@dashkite/polaris': link:../polaris
   '@dashkite/runes': link:../runes
@@ -18,6 +20,8 @@ specifiers:
 dependencies:
   '@dashkite/bake': 0.0.6
   '@dashkite/enchant': link:../enchant
+  '@dashkite/http-headers': link:../http-headers
+  '@dashkite/joy': 0.3.16
   '@dashkite/runes': link:../runes
   panda-confidential: 3.1.2
 

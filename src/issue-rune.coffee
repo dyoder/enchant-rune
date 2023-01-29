@@ -2,10 +2,13 @@ import * as Runes from "@dashkite/runes"
 import { getSecret } from "@dashkite/dolores/secrets"
 import { register } from "@dashkite/enchant/actions"
 import { Expression } from "@dashkite/enchant/expression"
-import { json64 } from "./helpers"
+import { Authorization } from "@dashkite/http-headers"
 
 register "issue rune", ({ secret, authorization }, context ) ->
-  json64 await Runes.issue {
+  credential = await Runes.issue {
     secret: ( await getSecret secret )
     authorization: Expression.apply authorization, context
   }
+  Authorization.format
+    scheme: "rune"
+    parameters: credential
