@@ -34,6 +34,7 @@ register "bind runes", ( value, context ) ->
 
     # go through the authorization documents that have resolvers
     results = for authorization in current when hasResolvers authorization
+      console.log "BINDING RUNE", authorization
       authorization.expires = value.expires
       credential = await Runes.issue {
         secret
