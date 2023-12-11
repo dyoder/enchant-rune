@@ -12,9 +12,9 @@ message = do ( _messages = null ) ->
 
 secret = undefined
 
-register "rune", ({ parameters }, { request }) ->
+register "rune", ({ parameters, options }, { request }) ->
   { rune, nonce } = parameters
-  secret ?= await getSecret "guardian"
+  secret ?= await getSecret options.secret
   console.log "enchant: verifying", rune, nonce
   if Runes.verify { rune, nonce, secret }
     console.log "enchant: verification succeeded"
